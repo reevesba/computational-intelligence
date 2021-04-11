@@ -54,3 +54,19 @@ class LinearRegressor:
                 Predicted values
         '''
         return np.dot(X_test, self.beta)
+
+    def sse(self, y_pred, y_test):
+        ''' Calculate Sum of Squares error
+            ----------
+            self : object
+                LinearRegressor instance
+            y_pred : 2d numpy array
+                predicted target values
+            y_test : 2d numpy array
+                actual target values
+            Returns
+            -------
+            float
+                total error
+        '''
+        return np.sum((y_pred - y_test)**2)

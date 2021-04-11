@@ -15,7 +15,7 @@ def main():
     eta = 0.25
     iterations = 100
 
-    X = np.loadtxt('../../datasets/diabetes.csv', delimiter=',')
+    X = np.loadtxt('../../datasets/diabetes.csv', delimiter=',', skiprows=1)
 
     # Plot the first and second values for the two classes
     indices0 = np.where(X[:, 8] == 0)
