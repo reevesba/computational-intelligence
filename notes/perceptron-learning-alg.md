@@ -18,23 +18,23 @@ Repeat the (x₁, t₁), (x₂, t₂) sequence until you obtain the correct outp
     sgn(1) = 1
 
     w₂ = w₁ - 1 ⋅ (1 - -1) ⋅ x₁
-    w₂ = [ 0  1  0] - 2 ⋅ [ 2  1 -1 ] = [ -4 -2  2 ]
+    w₂ = [ 0  1  0] - 2 ⋅ [ 2  1 -1 ] = [ -4 -1  2 ]
 
-    net₂ = w₂ᵗx₂ = [ -4 -2  2 ] ⋅ [ 0 -1 -1 ] = 0
-    sgn(0) = -1
+    net₂ = w₂ᵗx₂ = [ -4 -1  2 ] ⋅ [ 0 -1 -1 ] = -1
+    sgn(-1) = -1
 
     w₃ = w₂ - 1 ⋅ (-1 - 1) ⋅ x₂
-    w₃ = [ -4 -2  2 ] + 2 ⋅ [ 0 -1 -1 ] = [ -4 -4  0 ]
+    w₃ = [ -4 -1  2 ] + 2 ⋅ [ 0 -1 -1 ] = [ -4 -3  0 ]
 
-    Second Epoch: w₁ = [ -4 -4  0 ]ᵗ
-    net₁ = w₁ᵗx₁ = [ -4 -4  0 ] ⋅ [ 2  1 -1 ] = -12
-    sgn(-12) = -1
+    Second Epoch: w₁ = [ -4 -3  0 ]ᵗ
+    net₁ = w₁ᵗx₁ = [ -4 -3  0 ] ⋅ [ 2  1 -1 ] = -11
+    sgn(-11) = -1
 
     Correction not performed since t₁ = -1.
 
-    net₂ = w₂ᵗx₂ = [ -4 -4  0 ] ⋅ [ 0 -1 -1 ] = 4
-    sgn(4) = 1
+    net₂ = w₂ᵗx₂ = [ -4 -3  0 ] ⋅ [ 0 -1 -1 ] = 3
+    sgn(3) = 1
 
     Correction not performed since t₂ = 1.
 
-Correct output obtained after 1 full epoch.
+Correct output obtained after 2 epochs.
