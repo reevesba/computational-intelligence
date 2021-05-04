@@ -29,7 +29,8 @@ Hint: If you use your own implementation:
 -	Your conclusions about how the number of hidden layers and neurons influences the approximation error
 
 ### Directory Structure
+- dat: Datasets.
 - doc: Any relevant documentation/report.
-- img: Hosts any images for this README.
+- img: Hosts any images for this README/report.
 - out: Program output. 
 - src: Program source code files.

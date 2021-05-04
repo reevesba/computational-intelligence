@@ -245,11 +245,12 @@ def main():
     # Sort the dataset so that it plots nicely
     plotting_set = np.concatenate((train_set, test_set), axis=0)
     plotting_set = plotting_set[np.argsort(plotting_set[:, 0])]
+    print(plotting_set)
 
     # Experiment w/ different MLP implementations & architectures
-    experiment(X_train, y_train, X_test, y_test, 'custom', plotting_set)
-    experiment(X_train, y_train, X_test, y_test, 'sklearn', plotting_set)
-    experiment(X_train, y_train, X_test, y_test, 'keras', plotting_set)
+    #experiment(X_train, y_train, X_test, y_test, 'custom', plotting_set)
+    #experiment(X_train, y_train, X_test, y_test, 'sklearn', plotting_set)
+    #experiment(X_train, y_train, X_test, y_test, 'keras', plotting_set)
 
 if __name__ == "__main__":
     main()
