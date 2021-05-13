@@ -28,19 +28,19 @@ class MagicSquareFitness:
         self.sqrt_length = int(sqrt(self.length))
         self.magic_nbr = (self.sqrt_length + power(self.sqrt_length, 3))/2
 
-    def __get_sum(self: MagicSquareFitness, square: List, indexes: List) -> int:
+    def __get_sum(self: MagicSquareFitness, values: List, indexes: List) -> int:
         ''' Sum elements of square given indexes
             Parameters
             ----------
             self : MagicSquareFitness instance
-            square : List of square values
+            values : List of square values
             indexes : List of square indexes
 
             Returns
             -------
             Calculated sum
         '''
-        return reduce(lambda x, y: x + y, [square[i] for i in indexes])
+        return reduce(lambda x, y: x + y, [values[i] for i in indexes])
 
     def __get_diag_indexes(self: MagicSquareFitness) -> List:
         ''' Get the indexes of the square diagonals
@@ -59,12 +59,12 @@ class MagicSquareFitness:
         indexes_b = [i for i in range(step_b, self.length - step_b, step_b)]
         return [indexes_a, indexes_b]
 
-    def __get_diags_fitness(self: MagicSquareFitness, square: List) -> int:
+    def __get_diags_fitness(self: MagicSquareFitness, values: List) -> int:
         ''' Calculate the fitness of the diagonals
             Parameters
             ----------
             self : MagicSquareFitness instance
-            square : List of square values
+            values : List of square values
 
             Returns
             -------
@@ -72,15 +72,15 @@ class MagicSquareFitness:
         '''
         fitness = 0
         for indexes in self.__get_diag_indexes():
-            fitness += abs(self.magic_nbr - self.__get_sum(square, indexes))
+            fitness += abs(self.magic_nbr - self.__get_sum(values, indexes))
         return fitness
 
-    def __get_rows_fitness(self: MagicSquareFitness, square: List) -> int:
+    def __get_rows_fitness(self: MagicSquareFitness, values: List) -> int:
         ''' Calculate the fitness of the rows
             Parameters
             ----------
             self : MagicSquareFitness instance
-            square : List of square values
+            values : List of square values
 
             Returns
             -------
@@ -89,15 +89,15 @@ class MagicSquareFitness:
         fitness = 0
         for i in range(0, self.length, self.sqrt_length):
             indexes = [i + j for j in range(self.sqrt_length)]
-            fitness += abs(self.magic_nbr - self.__get_sum(square, indexes))
+            fitness += abs(self.magic_nbr - self.__get_sum(values, indexes))
         return fitness
 
-    def __get_cols_fitness(self: MagicSquareFitness, square: List) -> int:
+    def __get_cols_fitness(self: MagicSquareFitness, values: List) -> int:
         ''' Calculate the fitness of the columns
             Parameters
             ----------
             self : MagicSquareFitness instance
-            square : List of square values
+            values : List of square values
 
             Returns
             -------
@@ -105,21 +105,21 @@ class MagicSquareFitness:
         '''
         fitness = 0
         for i in range(self.sqrt_length):
-            indexes = [i + j for j in range(0, len(square), self.sqrt_length)]
-            fitness += abs(self.magic_nbr - self.__get_sum(square, indexes))
+            indexes = [i + j for j in range(0, len(values), self.sqrt_length)]
+            fitness += abs(self.magic_nbr - self.__get_sum(values, indexes))
         return fitness
 
-    def fitness(self: MagicSquareFitness, square: List) -> int:
+    def fitness(self: MagicSquareFitness, values: List) -> int:
         ''' Calculate the fitness of the square
             Parameters
             ----------
             self : MagicSquareFitness instance
-            square : List of square values
+            values : List of square values
 
             Returns
             -------
             Fitness of square
         '''
-        return (self.__get_diags_fitness(square) 
-              + self.__get_rows_fitness(square)
-              + self.__get_cols_fitness(square))
+        return (self.__get_diags_fitness(values) 
+              + self.__get_rows_fitness(values)
+              + self.__get_cols_fitness(values))

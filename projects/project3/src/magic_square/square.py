@@ -13,13 +13,13 @@ from typing import List, TypeVar
 Square = TypeVar("Square")
 
 class Square:
-    def __init__(self: Square, length: int, square: List, parent_a: Square, parent_b: Square) -> None:
+    def __init__(self: Square, length: int, values: List, parent_a: Square, parent_b: Square) -> None:
         ''' Initialize Square instance
             Parameters
             ----------
             self : Square instance
             length : Square length
-            square : Square values
+            values : Square values
             parent_a : Square's first parent
             parent_b : Square's second parent
 
@@ -28,12 +28,12 @@ class Square:
             None
         '''
         self.length = length
-        if square: self.square = square
-        else: self.square = self.__random_square()
+        if values: self.values = values
+        else: self.values = self.__random_square()
         self.parent_a = parent_a
         self.parent_b = parent_b
         self.fitness_function = MagicSquareFitness(self.length)
-        self.fitness = self.fitness_function.fitness(self.square)
+        self.fitness = self.fitness_function.fitness(self.values)
         
     def __random_square(self: Square) -> List:
         ''' Generate random square values
@@ -47,7 +47,7 @@ class Square:
         '''
         return shuffle([i + 1 for i in range(self.length)])
 
-    def get_square(self: Square) -> List:
+    def get_values(self: Square) -> List:
         ''' Return square values
             Parameters
             ----------
@@ -57,9 +57,9 @@ class Square:
             -------
             Square values
         '''
-        return self.square
+        return self.values
 
-    def get_parent1(self: Square) -> Square:
+    def get_parent_a(self: Square) -> Square:
         ''' Return square's first parent
             Parameters
             ----------
@@ -71,7 +71,7 @@ class Square:
         '''
         return self.parent1
     
-    def get_parent2(self: Square) -> Square:
+    def get_parent_b(self: Square) -> Square:
         ''' Return square's second parent
             Parameters
             ----------

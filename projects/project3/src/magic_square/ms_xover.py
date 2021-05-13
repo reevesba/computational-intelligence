@@ -37,7 +37,7 @@ class MagicSquareCrossover:
             -------
             inv_seq : The inversion sequence of the square
         '''
-        square = parent.get_square()
+        square = parent.get_values()
         inv_seq = [0 for _ in square]
 
         for i in range(len(square)):

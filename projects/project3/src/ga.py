@@ -4,7 +4,6 @@ Author: Bradley Reeves, Sam Shissler
 Date:   05/11/2021
 
 '''
-
 from numpy import mod, reciprocal, random
 from sklearn.utils import shuffle
 from typing import Union, List, TypeVar
@@ -18,14 +17,16 @@ MagicSquareMutator = TypeVar("MagicSquareMutator")
 GeneticAlgorithm = TypeVar("GeneticAlgorithm")
 
 # MaxFunction types
-
-# For multiple valid types
-# data: Union[str, ET.Element]
+Individual = TypeVar("Individual")
+MaxFuncCrossover = TypeVar("MaxFuncCrossover")
+MaxFuncMutator = TypeVar("MaxFuncMutator")
 
 class GeneticAlgorithm:
-    def __init__(self: GeneticAlgorithm, individual: Square, length: int, xover_func: MagicSquareCrossover, 
-                 mutate_func: MagicSquareMutator, generations: int = 100, pop_size: int = 100, 
-                 mutation_prob: int = -1, num_elite: int = 2, tournaments: bool = True, max: bool = False) -> None:
+    def __init__(self: GeneticAlgorithm, individual: Union[Square, Individual], length: int, 
+                 xover_func: Union[MagicSquareCrossover, MaxFuncCrossover], 
+                 mutate_func: Union[MagicSquareMutator, MaxFuncMutator], generations: int = 100, 
+                 pop_size: int = 100, mutation_prob: int = -1, num_elite: int = 2, 
+                 tournaments: bool = True) -> None:
         ''' Initialize GeneticAlgorithm instance
             Parameters
             ----------
@@ -61,6 +62,8 @@ class GeneticAlgorithm:
         self.generations = generations
         self.num_elite = num_elite
         self.tournaments = tournaments
+        self.iterations = 0
+        self.avg_fitness = []
 
         # Initialize the first generation
         self.population = [self.individual(self.length, None, None, None) for _ in range(self.pop_size)]
@@ -164,9 +167,24 @@ class GeneticAlgorithm:
                 new_population.append(winners[0])
                 new_population.append(winners[1])
             else:
-                new_population.append(child_a)
-                new_population.append(child_b)
+                new_population.append(children[0])
+                new_population.append(children[1])
         return new_population
+
+    def __average_fitness(self: GeneticAlgorithm) -> float:
+        ''' Calc the average fitness for generation
+            Parameters
+            ----------
+            self : GeneticAlgorithm instance
+
+            Returns
+            -------
+            Average population fitness
+        '''
+        sum = 0
+        for ind in self.population:
+            sum += ind.get_fitness()
+        return sum/self.pop_size
 
     def execute_ga(self: GeneticAlgorithm) -> None:
         ''' Run the genetic algorithm
@@ -178,7 +196,10 @@ class GeneticAlgorithm:
             -------
             None
         '''
+        self.iterations = 0
         for i in range(self.generations):
+            self.iterations += 1
+            self.avg_fitness.append(self.__average_fitness())
             self.population = self.__generate_generation()
             
             best = self.population[0]
@@ -186,8 +207,15 @@ class GeneticAlgorithm:
                 if ind.get_fitness() < best.get_fitness():
                     best = ind
 
-            # Stopping condition
+            # Need to bail to prevent division by zero
+            # This is the optimal solution anyways
             if best.get_fitness() == 0:
-                return best.get_square()
+                return best
+
+            # For test purposes, return when optimal values of 
+            # x and y are found
+            if best.get_values() == [10, 4]:
+                return best
+        return best
 
             

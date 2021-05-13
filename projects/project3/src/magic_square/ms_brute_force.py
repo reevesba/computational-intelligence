@@ -30,6 +30,7 @@ class MagicSquareBF:
         self.length = len(self.square)
         self.sqrt_length = int(sqrt(self.length))
         self.magic_nbr = (self.sqrt_length + power(self.sqrt_length, 3))/2
+        self.iterations = 0
 
     def __swap_values(self: MagicSquareBF) -> None:
         ''' Swap two values in the square list
@@ -120,7 +121,9 @@ class MagicSquareBF:
             -------
             A magic square
         '''
+        self.iterations = 0
         while True:
+            self.iterations += 1
             self.__swap_values()
             if self.__validate_square(): 
                 return self.square
