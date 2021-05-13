@@ -4,6 +4,6 @@
 
 ### Project 2: MLP
 
-### Project 3:
+### Project 3: Genetic Algorithm
 
 ### Final Project:

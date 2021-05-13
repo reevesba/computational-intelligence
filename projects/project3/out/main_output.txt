@@ -1,0 +1,65 @@
+# Generations: 100, population size: 100, mutation probability: 0.25
+
+## Magic Square
+Genetic Algorithm:
+Time: 0.20122790336608887
+Fittest: [4, 9, 2, 3, 5, 7, 8, 1, 6]
+Iterations: 11
+Brute-Force Algorithm:
+Time: 0.1828763484954834
+Fittest: [4, 9, 2, 3, 5, 7, 8, 1, 6]
+Iterations: 28379
+
+## Function Maximization
+Genetic Algorithm:
+Time: 0.018137216567993164
+Fittest: 5.308483982570059 [10, 4]
+Iterations: 1
+Brute-Force Algorithm:
+Time: 0.00011920928955078125
+Fittest: (5.308483982570059, 10, 4)
+Iterations: 36
+
+# Generations: 300, population size: 50, mutation probability: 0.25
+
+## Magic Square
+Genetic Algorithm:
+Time: 0.07879829406738281
+Fittest: [8, 3, 4, 1, 5, 9, 6, 7, 2]
+Iterations: 13
+Brute-Force Algorithm:
+Time: 0.2051219940185547
+Fittest: [6, 1, 8, 7, 5, 3, 2, 9, 4]
+Iterations: 32855
+
+## Function Maximization
+Genetic Algorithm:
+Time: 0.005408525466918945
+Fittest: 5.308483982570059 [10, 4]
+Iterations: 1
+Brute-Force Algorithm:
+Time: 0.00010418891906738281
+Fittest: (5.308483982570059, 10, 4)
+Iterations: 36
+
+# Generations: 300, population size: 10, mutation probability: 0.25
+
+## Magic Square
+Genetic Algorithm:
+Time: 0.02860403060913086
+Fittest: [8, 1, 6, 3, 5, 7, 4, 9, 2]
+Iterations: 42
+Brute-Force Algorithm:
+Time: 0.11850738525390625
+Fittest: [6, 1, 8, 7, 5, 3, 2, 9, 4]
+Iterations: 17689
+
+## Function Maximization
+Genetic Algorithm:
+Time: 0.0011894702911376953
+Fittest: 5.308483982570059 [10, 4]
+Iterations: 2
+Brute-Force Algorithm:
+Time: 0.00010204315185546875
+Fittest: (5.308483982570059, 10, 4)
+Iterations: 36

@@ -6,3 +6,6 @@ code-samples/mlp/__pycache__
 
 projects/project1/src/__pycache__
 projects/project2/src/__pycache__
+projects/project3/src/__pycache__
+projects/project3/src/magic_square/__pycache__
+projects/project3/src/max_func/__pycache__
