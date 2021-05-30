@@ -24,7 +24,6 @@ Implement a classifier for the characters L and I using the discrete perceptron 
 4. Code
 
 ### Directory Structure
-- dat: Dataset containing Is and Ls. 
 - doc: Any relevant documentation.
 - img: Hosts any images for this README.
 - out: Program output. 

@@ -34,7 +34,6 @@ Maximize the following function using a genetic algorithm.
 - Your conclusions.
 
 ### Directory Structure
-- dat: Datasets.
 - doc: Any relevant documentation/report.
 - img: Hosts any images for this README/project.
 - out: Program output.
